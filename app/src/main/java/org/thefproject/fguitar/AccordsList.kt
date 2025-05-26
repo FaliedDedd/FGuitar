@@ -1,7 +1,9 @@
 package org.thefproject.fguitar
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,10 +24,10 @@ class AccordsList : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val g = findViewById<Button>(R.id.button)
+       val g = findViewById<Button>(R.id.button)
         g.setOnClickListener {
-            val g = Intent(this, AccordsList::class.java)
+            val g = Intent(this, Accord_1::class.java)
             startActivity(g)
         }
+        }
     }
-}

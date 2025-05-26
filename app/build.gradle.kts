@@ -12,14 +12,14 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "GITHUB_API_KEY", "\"${System.getenv("GITHUB_API_KEY") ?: ""}\"")
     }
 
-    // ❗️ Переместил `buildFeatures` наружу!
+
     buildFeatures {
         buildConfig = true
     }

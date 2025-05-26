@@ -97,7 +97,7 @@
                                 android:layout_marginBottom="8dp"
 
                                 android:fontFamily="@font/russo_one"
-                                android:text="Аккорды"
+                                android:text="Am"
                                 android:textColor="@color/buttontext"
                                 android:textSize="13sp" />
 
@@ -164,7 +164,7 @@
                                 android:layout_marginBottom="8dp"
 
                                 android:fontFamily="@font/russo_one"
-                                android:text="Песни"
+                                android:text="C"
                                 android:textColor="@color/buttontext"
                                 android:textSize="13sp" />
 

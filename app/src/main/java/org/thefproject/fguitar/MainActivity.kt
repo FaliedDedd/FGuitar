@@ -214,7 +214,7 @@ checkForUpdates()
     }
 
     private fun installAPK() {
-        val apkFile = File(getExternalFilesDir(null), "EduCA.apk")
+        val apkFile = File(getExternalFilesDir(null), "FGuitar.apk")
         val apkUri = FileProvider.getUriForFile(this, "${packageName}.provider", apkFile)
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE).apply {
             data = apkUri
@@ -223,7 +223,7 @@ checkForUpdates()
         startActivity(intent)
     }
     private fun downloadAPK(url: String) {
-        val fileName = "EduCA.apk"
+        val fileName = "FGuitar.apk"
         val dir = getExternalFilesDir(null)
 
         clearTempDirectory(dir)
@@ -234,7 +234,7 @@ checkForUpdates()
         }
 
         val request = DownloadManager.Request(Uri.parse(url))
-        request.setTitle("Загрузка обновления для EduCA")
+        request.setTitle("Загрузка обновления для FGuitar")
         request.setDescription("Начало загрузки...")
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         request.setDestinationInExternalFilesDir(this, null, fileName)
