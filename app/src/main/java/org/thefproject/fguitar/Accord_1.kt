@@ -1,6 +1,7 @@
 package org.thefproject.fguitar
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,32 +24,44 @@ class Accord_1 : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.imageView)
         val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView)
 
-        fetchJsonData(titleTextView, imageView, descriptionTextView)
+        fetchSectionData("page_1", titleTextView, imageView, descriptionTextView)
     }
 
-    private fun fetchJsonData(titleView: TextView, imageView: ImageView, descriptionView: TextView) {
+    private fun fetchSectionData(sectionId: String, titleView: TextView, imageView: ImageView, descriptionView: TextView) {
         val client = OkHttpClient()
-        val request = Request.Builder().url(jsonUrl).build()
+        val request = Request.Builder()
+            .url("https://raw.githubusercontent.com/FaliedDedd/FGuitar/main/json/accords.json")
+            .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
+                Log.e("ERROR", "Ошибка загрузки JSON: ${e.message}")
             }
 
             override fun onResponse(call: Call, response: Response) {
-                response.body?.string()?.let {
+                val responseBody = response.body?.string()
+                responseBody?.let {
                     val jsonObject = JSONObject(it)
-                    val title = jsonObject.getString("title")
-                    val imageUrl = jsonObject.getString("image_url")
-                    val description = jsonObject.getString("description")
+                    val pagesArray = jsonObject.getJSONArray("pages")
 
-                    runOnUiThread {
-                        titleView.text = title
-                        descriptionView.text = description
-                        Glide.with(this@Accord_1).load(imageUrl).into(imageView)
+                    for (i in 0 until pagesArray.length()) {
+                        val page = pagesArray.getJSONObject(i)
+                        if (page.getString("id") == sectionId) {
+                            val title = page.getString("title")
+                            val imageUrl = page.getString("image_url")
+                            val description = page.getString("description")
+
+                            runOnUiThread {
+                                titleView.text = title
+                                descriptionView.text = description
+                                Glide.with(this@Accord_1).load(imageUrl).into(imageView)
+                            }
+                            break
+                        }
                     }
                 }
             }
         })
     }
+
 }
