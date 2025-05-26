@@ -14,6 +14,7 @@
         android:layout_width="202dp"
         android:layout_height="42dp"
         android:fontFamily="@font/russo_one"
+        android:textColor="@color/buttontext"
         android:text="FMusic"
         android:textAlignment="center"
         android:textSize="34sp"
@@ -26,6 +27,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="272dp"
+        android:textColor="@color/buttontext"
         android:layout_height="37dp"
         android:fontFamily="@font/russo_one"
         android:text="Все для вашего удобства"
