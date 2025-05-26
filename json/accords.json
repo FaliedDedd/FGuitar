@@ -1,5 +1,17 @@
+
 {
-    "title": "Аккорд Am",
+  "pages": [
+    {
+      "id": "page_1",
+        "title": "Аккорд Am",
     "image_url": "https://pereborom.ru/wp-content/uploads/2018/06/Akkord-Am-1-lad.png",
     "description": "ля-минорный аккорд (обозначается Am-аккорд) – это триада, которая состоит из звуков ля, до и ми. Интервалы аккорда – это тоника (ля), малая терция (до) и чистая квинта (ми)."
+    },
+    {
+      "id": "page_2",
+      "title": "Раздел 2: Баррэ-аккорды",
+      "image_url": "https://example.com/barre.jpg",
+      "description": "Раздел посвящён сложным аккордам с баррэ."
+    }
+  ]
 }
