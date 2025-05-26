@@ -1,18 +1,19 @@
 package org.thefproject.fguitar
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
 class Accord_1 : AppCompatActivity() {
-
-    private val jsonUrl = "https://api.github.com/repos/your-username/your-private-repo/contents/test.json"
+    private val jsonUrl = "https://raw.githubusercontent.com/FaliedDedd/FGuitar/refs/heads/main/json/accords.json"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,37 +27,25 @@ class Accord_1 : AppCompatActivity() {
     }
 
     private fun fetchJsonData(titleView: TextView, imageView: ImageView, descriptionView: TextView) {
-        val apiKey = BuildConfig.GITHUB_API_KEY
-
         val client = OkHttpClient()
-        val request = Request.Builder()
-            .url(jsonUrl)
-            .header("Authorization", "token $apiKey") // Используем API-ключ для доступа
-            .build()
+        val request = Request.Builder().url(jsonUrl).build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("ERROR", "Ошибка загрузки JSON: ${e.message}")
+                e.printStackTrace()
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body?.string()
-                Log.d("SERVER_RESPONSE", responseBody ?: "Пустой ответ")
+                response.body?.string()?.let {
+                    val jsonObject = JSONObject(it)
+                    val title = jsonObject.getString("title")
+                    val imageUrl = jsonObject.getString("image_url")
+                    val description = jsonObject.getString("description")
 
-                responseBody?.let {
-                    try {
-                        val jsonObject = JSONObject(it)
-                        val title = jsonObject.getString("title")
-                        val imageUrl = jsonObject.getString("image_url")
-                        val description = jsonObject.getString("description")
-
-                        runOnUiThread {
-                            titleView.text = title
-                            descriptionView.text = description
-                            Glide.with(this@Accord_1).load(imageUrl).into(imageView)
-                        }
-                    } catch (e: Exception) {
-                        Log.e("ERROR", "Ошибка обработки JSON: ${e.message}")
+                    runOnUiThread {
+                        titleView.text = title
+                        descriptionView.text = description
+                        Glide.with(this@Accord_1).load(imageUrl).into(imageView)
                     }
                 }
             }

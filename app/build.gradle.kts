@@ -16,13 +16,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-
         buildConfigField("String", "GITHUB_API_KEY", "\"${System.getenv("GITHUB_API_KEY") ?: ""}\"")
     }
-    android {
-        buildFeatures {
-            buildConfig = true
-        }
+
+    // ❗️ Переместил `buildFeatures` наружу!
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
