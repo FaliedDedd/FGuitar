@@ -5,6 +5,12 @@
             "email": "1",
             "password": "1",
             "logins": []
+        },
+        {
+            "username": "falied",
+            "email": "falied@duck.com",
+            "password": "123123",
+            "logins": []
         }
     ]
 }
