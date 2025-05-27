@@ -2,9 +2,9 @@
     "pages": [
         {
             "id": "page_1",
-            "title": "6un",
-            "image_url": "g",
-            "description": "6ubub"
+            "title": "test",
+            "image_url": "test",
+            "description": "test"
         }
     ]
 }
