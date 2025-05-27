@@ -5,10 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Accord_1">
 
 
     <TextView
+        android:textColor="@color/buttontext"
         android:id="@+id/titleTextView"
         android:layout_width="173dp"
         android:layout_height="47dp"
@@ -35,11 +37,15 @@
 
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="410dp"
-        android:layout_height="82dp"
+        android:layout_width="359dp"
+        android:layout_height="159dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:textSize="16sp"
+        android:fontFamily="@font/russo_one"
+        android:textAlignment="center"
+        android:textColor="@color/buttontext"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

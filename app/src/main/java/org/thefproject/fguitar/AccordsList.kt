@@ -29,5 +29,10 @@ class AccordsList : AppCompatActivity() {
             val g = Intent(this, Accord_1::class.java)
             startActivity(g)
         }
+        val add = findViewById<Button>(R.id.button3)
+        add.setOnClickListener {
+            val add = Intent(this, ConstructorActivity::class.java)
+            startActivity(add)
+        }
         }
     }
