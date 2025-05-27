@@ -1,17 +1,26 @@
-
 {
-  "pages": [
-    {
-      "id": "page_1",
-        "title": "Аккорд Am",
-    "image_url": "https://pereborom.ru/wp-content/uploads/2018/06/Akkord-Am-1-lad.png",
-    "description": "ля-минорный аккорд (обозначается Am-аккорд) – это триада, которая состоит из звуков ля, до и ми. Интервалы аккорда – это тоника (ля), малая терция (до) и чистая квинта (ми)."
+    "name": "accords.json",
+    "path": "json\/accords.json",
+    "sha": "8a45157d6d1e74bca78338ec41c428481d603bea",
+    "size": 753,
+    "url": "https:\/\/api.github.com\/repos\/FaliedDedd\/FGuitar\/contents\/json\/accords.json?ref=main",
+    "html_url": "https:\/\/github.com\/FaliedDedd\/FGuitar\/blob\/main\/json\/accords.json",
+    "git_url": "https:\/\/api.github.com\/repos\/FaliedDedd\/FGuitar\/git\/blobs\/8a45157d6d1e74bca78338ec41c428481d603bea",
+    "download_url": "https:\/\/raw.githubusercontent.com\/FaliedDedd\/FGuitar\/main\/json\/accords.json",
+    "type": "file",
+    "content": "CnsKICAicGFnZXMiOiBbCiAgICB7CiAgICAgICJpZCI6ICJwYWdlXzEiLAog\nICAgICAgICJ0aXRsZSI6ICLQkNC60LrQvtGA0LQgQW0iLAogICAgImltYWdl\nX3VybCI6ICJodHRwczovL3BlcmVib3JvbS5ydS93cC1jb250ZW50L3VwbG9h\nZHMvMjAxOC8wNi9Ba2tvcmQtQW0tMS1sYWQucG5nIiwKICAgICJkZXNjcmlw\ndGlvbiI6ICLQu9GPLdC80LjQvdC+0YDQvdGL0Lkg0LDQutC60L7RgNC0ICjQ\nvtCx0L7Qt9C90LDRh9Cw0LXRgtGB0Y8gQW0t0LDQutC60L7RgNC0KSDigJMg\n0Y3RgtC+INGC0YDQuNCw0LTQsCwg0LrQvtGC0L7RgNCw0Y8g0YHQvtGB0YLQ\nvtC40YIg0LjQtyDQt9Cy0YPQutC+0LIg0LvRjywg0LTQviDQuCDQvNC4LiDQ\nmNC90YLQtdGA0LLQsNC70Ysg0LDQutC60L7RgNC00LAg4oCTINGN0YLQviDR\ngtC+0L3QuNC60LAgKNC70Y8pLCDQvNCw0LvQsNGPINGC0LXRgNGG0LjRjyAo\n0LTQvikg0Lgg0YfQuNGB0YLQsNGPINC60LLQuNC90YLQsCAo0LzQuCkuIgog\nICAgfSwKICAgIHsKICAgICAgImlkIjogInBhZ2VfMiIsCiAgICAgICJ0aXRs\nZSI6ICLQoNCw0LfQtNC10LsgMjog0JHQsNGA0YDRjS3QsNC60LrQvtGA0LTR\niyIsCiAgICAgICJpbWFnZV91cmwiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9i\nYXJyZS5qcGciLAogICAgICAiZGVzY3JpcHRpb24iOiAi0KDQsNC30LTQtdC7\nINC\/0L7RgdCy0Y\/RidGR0L0g0YHQu9C+0LbQvdGL0Lwg0LDQutC60L7RgNC0\n0LDQvCDRgSDQsdCw0YDRgNGNLiIKICAgIH0KICBdCn0K\n",
+    "encoding": "base64",
+    "_links": {
+        "self": "https:\/\/api.github.com\/repos\/FaliedDedd\/FGuitar\/contents\/json\/accords.json?ref=main",
+        "git": "https:\/\/api.github.com\/repos\/FaliedDedd\/FGuitar\/git\/blobs\/8a45157d6d1e74bca78338ec41c428481d603bea",
+        "html": "https:\/\/github.com\/FaliedDedd\/FGuitar\/blob\/main\/json\/accords.json"
     },
-    {
-      "id": "page_2",
-      "title": "Раздел 2: Баррэ-аккорды",
-      "image_url": "https://example.com/barre.jpg",
-      "description": "Раздел посвящён сложным аккордам с баррэ."
-    }
-  ]
+    "pages": [
+        {
+            "id": "page_1",
+            "title": "1",
+            "image_url": "\"\n",
+            "description": "1"
+        }
+    ]
 }
