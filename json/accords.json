@@ -2,44 +2,7 @@
     "pages": [
         {
             "id": "page_1",
-            "title": "2",
-            "image_url": "2",
-            "description": "2"
-        },
-        {
-            "id": "page_2",
-            "title": "1",
-            "image_url": "1",
-            "description": "1"
-        },
-        {
-            "id": "page_3",
-            "title": "1",
-            "image_url": "1",
-            "description": "1"
-        },
-        {
-            "id": "page_4",
-            "title": "1",
-            "image_url": "1",
-            "description": "1"
-        },
-        {
-            "id": "page_5",
-            "title": "1",
-            "image_url": "1",
-            "description": "1"
-        },
-        {
-            "id": "page_6",
-            "title": "may",
-            "image_url": "content:\/\/media\/picker_get_content\/0\/com.android.providers.media.photopicker\/media\/33",
-            "description": "dfs",
-            "uploaded_by": "unknown"
-        },
-        {
-            "id": "page_7",
-            "title": "may",
+            "title": "test",
             "image_url": "content:\/\/media\/picker_get_content\/0\/com.android.providers.media.photopicker\/media\/33",
             "description": "dfs",
             "uploaded_by": "unknown"
