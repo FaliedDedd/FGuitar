@@ -10,7 +10,13 @@
             "username": "falied",
             "email": "falied@duck.com",
             "password": "123123",
-            "logins": []
+            "logins": [
+                {
+                    "ip_address": "192.168.1.100",
+                    "device_type": "Google sdk_gphone64_x86_64",
+                    "timestamp": "2025-05-27T15:55:58Z"
+                }
+            ]
         }
     ]
 }
