@@ -13,6 +13,7 @@ import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsetsAnimation
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -25,6 +26,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
+import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -36,6 +38,7 @@ import java.time.format.DateTimeFormatter
 
 import java.util.Calendar
 class MainActivity : AppCompatActivity() {
+    private val apiKey = "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"
 
     private lateinit var downloadProgressDialog: AlertDialog
     private var downloadedBytes: Long = 0L
@@ -51,25 +54,60 @@ class MainActivity : AppCompatActivity() {
         val message: String,
         val imageUrl: String
     )
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         setContentView(R.layout.activity_main)
-checkForUpdates()
-        val g = findViewById<Button>(R.id.button)
-        g.setOnClickListener {
-            val g = Intent(this, AccordsList::class.java)
-            startActivity(g)
+        checkAuthorization()
+        checkForUpdates()
+        ButtonSetup()
+        val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("isLoggedIn", true)
+            apply()
         }
+
     }
 
+    fun ButtonSetup(){
+        val g = findViewById<Button>(R.id.button)
+        g.setOnClickListener {
+            val g = Intent(this, AccordsListActivity::class.java)
+            startActivity(g)
+    }
+        val add = findViewById<Button>(R.id.button3)
+       add.setOnClickListener {
+            val g = Intent(this, ConstructorActivity::class.java)
+            startActivity(g)
+        }
+        }
 
 
+    private fun checkAuthorization() {
+        // Здесь мы используем SharedPreferences для хранения флага авторизации
+        // При успешном входе мы должны сохранить в SharedPreferences isLoggedIn = true
+        val sharedPref = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+
+        // Если пользователь не авторизован — перенаправляем на экран входа (LoginActivity)
+        if (!isLoggedIn) {
+            val intent = Intent(this, LoginActivity::class.java)
+            // Флаги, чтобы убрать текущий стек активностей
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish() // завершаем текущую активность
+        }
+    }
     private fun checkForUpdates() {
         val client = OkHttpClient()
-        val url = "https://raw.githubusercontent.com/FaliedDedd/FGuitar/refs/heads/main/json/ota.json"
 
+        val url = "https://api.github.com/repos/FaliedDedd/FGuitar/contents/json/ota.json?ref=main"
 
-        val request = Request.Builder().url(url).build()
+        val request = Request.Builder()
+            .url(url)
+            // Добавляем заголовки для авторизации и для корректного ответа API
+            .header("Authorization", "Bearer $apiKey")
+            .header("Accept", "application/vnd.github.v3+json")
+            .build()
 
         client.newCall(request).enqueue(object : okhttp3.Callback {
             override fun onFailure(call: okhttp3.Call, e: IOException) {
@@ -84,12 +122,15 @@ checkForUpdates()
 
             override fun onResponse(call: okhttp3.Call, response: Response) {
                 if (response.isSuccessful) {
-                    response.body?.string()?.let { jsonString ->
-                        val jsonObject = JSONObject(jsonString)
-                        val latestVersion = jsonObject.getString("version")
-                        val downloadUrl = jsonObject.getString("url")
-                        val changesArray = jsonObject.getJSONArray("changes")
-                        var lastBuildNumber = jsonObject.getString("build")
+                    val bodyString = response.body?.string() ?: ""
+                    try {
+
+                        val jsonResponse = JSONObject(bodyString)
+
+                        val latestVersion = jsonResponse.getString("version")
+                        val downloadUrl = jsonResponse.getString("url")
+                        val changesArray = jsonResponse.getJSONArray("changes")
+                        val lastBuildNumber = jsonResponse.getString("build")
 
                         val changesList = mutableListOf<String>()
                         for (i in 0 until changesArray.length()) {
@@ -109,16 +150,17 @@ checkForUpdates()
                             }
                         } else {
                             runOnUiThread {
-
-
+                                // Обработка случая, когда обновлений нет
                             }
                         }
-                    } ?: runOnUiThread {
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Ошибка: Пустой ответ от сервера",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    } catch (e: Exception) {
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Ошибка обработки данных обновления",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 } else {
                     runOnUiThread {
@@ -132,6 +174,7 @@ checkForUpdates()
             }
         })
     }
+
 
     private fun showUpdateDialog(
         latestVersion: String,

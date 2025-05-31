@@ -24,15 +24,6 @@ class AccordsList : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-       val g = findViewById<Button>(R.id.button)
-        g.setOnClickListener {
-            val g = Intent(this, Accord_1::class.java)
-            startActivity(g)
-        }
-        val add = findViewById<Button>(R.id.button3)
-        add.setOnClickListener {
-            val add = Intent(this, ConstructorActivity::class.java)
-            startActivity(add)
-        }
+
         }
     }

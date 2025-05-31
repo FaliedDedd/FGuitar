@@ -12,22 +12,22 @@
         android:hint="Введите заголовок"/>
 
     <EditText
-        android:id="@+id/imageUrlEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите URL изображения"/>
-
-    <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Введите описание"/>
 
     <Button
+        android:id="@+id/addButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выбрать изображение" />
+
+    <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить в JSON"/>
+        android:text="Добавить в JSON" />
 
     <TextView
         android:id="@+id/statusTextView"
