@@ -1,18 +1,14 @@
-{
-    "pages": [
-        {
-            "id": "page_1",
-            "title": "test",
-            "image_url": "content:\/\/media\/picker_get_content\/0\/com.android.providers.media.photopicker\/media\/33",
-            "description": "dfs",
-            "uploaded_by": "unknown"
-        },
-        {
-            "id": "page_2",
-            "title": "test2",
-            "image_url": "https://raw.githubusercontent.com/FaliedDedd/FGuitar/refs/heads/main/images/unknown/b6c81df6-d94d-4ac2-9c04-6e8a8fd0b76f.jpg?token=GHSAT0AAAAAADEDCRVXNPSYE52MBMITYWMO2BV5YNQ",
-            "description": "test2",
-            "uploaded_by": "unknown"
-        }
-    ]
-}
+[
+  {
+    "id": "page_1",
+    "title": "Первый пункт",
+    "image_url": "https://via.placeholder.com/600x200.png?text=Page+1",
+    "description": "Описание первой страницы"
+  },
+  {
+    "id": "page_2",
+    "title": "Второй пункт",
+    "image_url": "https://via.placeholder.com/600x200.png?text=Page+2",
+    "description": "Описание второй страницы"
+  }
+]
